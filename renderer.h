@@ -52,7 +52,7 @@ public:
         m_pixels[offset] = r;
         m_pixels[offset + 1] = g;
         m_pixels[offset + 2] = b;
-        m_pixels[offset + 3] = a;
+        m_pixels[offset + 3] = 255;
     }
 
     void clear()
@@ -62,6 +62,7 @@ public:
             m_pixels[x] = 0;
         }
     }
+    sf::Uint8 *pixels() const;
 };
 
 

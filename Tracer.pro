@@ -11,7 +11,7 @@ SOURCES += \
         renderer.cpp \
         sphere.cpp
 
-LIBS += -lsfml-window -lsfml-system -lsfml-graphics
+LIBS += -lsfml-window -lsfml-system -lsfml-graphics -lSOIL
 
 HEADERS += \
     helper.h \

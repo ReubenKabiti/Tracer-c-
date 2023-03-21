@@ -3,7 +3,7 @@
 #include "renderer.h"
 #include <vector>
 #include <algorithm>
-
+#include <SOIL/SOIL.h>
 #include "sphere.h"
 
 static const uint32_t DISPLAY_WIDTH = 500;
@@ -54,6 +54,7 @@ public:
             m_window->clear();
             Image &image = renderer->render(objects);
             auto texture = image.texture();
+            SOIL_save_image("example.png", SOIL_SAVE_TYPE_BMP, DISPLAY_WIDTH, DISPLAY_HEIGHT, 4, image.pixels());
             sprite.setTexture(*texture);
             m_window->draw(sprite);
             m_window->display();

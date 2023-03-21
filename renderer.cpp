@@ -82,16 +82,12 @@ glm::vec4 Renderer::perPixel(float u, float v, const std::vector<Hitable*> &obje
     HitInfo hi = vecMin(hitInfos);
     float f = glm::dot(hi.normal, -info.lightDirection);
     glm::vec4 color = hi.color * f;
+    color.a = 1;
     return color;
 }
 
 
-
-
-
-
-
-
-
-
-
+sf::Uint8 *Image::pixels() const
+{
+    return m_pixels;
+}
