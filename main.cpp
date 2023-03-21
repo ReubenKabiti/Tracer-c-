@@ -39,7 +39,9 @@ public:
 
         while (m_window->isOpen())
         {
+
             sf::Event event;
+            bool shouldSave = false;
             while(m_window->pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
@@ -50,11 +52,13 @@ public:
                     renderer = new Renderer(event.size.width, event.size.height);
                 }
             }
-
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+                shouldSave = true;
             m_window->clear();
             Image &image = renderer->render(objects);
             auto texture = image.texture();
-            SOIL_save_image("example.png", SOIL_SAVE_TYPE_BMP, DISPLAY_WIDTH, DISPLAY_HEIGHT, 4, image.pixels());
+            if (shouldSave)
+                SOIL_save_image("example.png", SOIL_SAVE_TYPE_BMP, DISPLAY_WIDTH, DISPLAY_HEIGHT, 4, image.pixels());
             sprite.setTexture(*texture);
             m_window->draw(sprite);
             m_window->display();
